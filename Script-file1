@@ -1,0 +1,10 @@
+### To Print mysql grant command
+
+[root@kapendra$] cat list.txt 
+ %                                          user1           
+ localhost                                  user2   
+
+[root@kapendra$] awk '{ print "show grants for","'\''" $2 "'\''""@" "'\''" $1 "'\''" ";"}' list.txt 
+show grants for 'user1'@'%';
+show grants for 'user2'@'localhost';
+
