@@ -1,0 +1,14 @@
+#!/bin/bash
+input="1.json"
+while IFS= read -r line
+do
+    
+    t_value=$(echo "$line"| awk -F ":" '{ print $2}' | awk -F "," '{print $1}')
+    local=$(date -d @"$t_value")
+    sahi_value=$(echo "$local" | sed  '$s/\w*$//')
+    
+     sed -i "s/$t_value/$sahi_value/g" $input 
+
+done < "$input"
+
+exit 0
